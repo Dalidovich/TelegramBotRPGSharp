@@ -6,6 +6,8 @@ using Telegram.Bot.Extensions.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Types.ReplyMarkups;
+using System.Collections.Generic;
+using TelegramBotRPG;
 
 namespace YPTelegramBotRPG
 {
@@ -13,13 +15,8 @@ namespace YPTelegramBotRPG
     {
         public static async void welcome(Player player,Message m, ITelegramBotClient botClient)
         {
-            //ReplyKeyboardMarkup markup = new(new[]
-            //{
-            //    new ReplyKeyboardMarkup[]{"next room","quit"},
-            //    new ReplyKeyboardMarkup[]{"use hp potion"}
-            //})
             string messageFromBot = NotifyEvent.display() + player;
-            await botClient.SendTextMessageAsync(m.Chat, messageFromBot);
+            await botClient.SendTextMessageAsync(m.Chat, messageFromBot,replyMarkup: InlineButtons.GetButtonsOnEmptyPlace());
         }
     }
 }

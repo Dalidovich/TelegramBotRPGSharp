@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enemy.cs" />
+    <Compile Include="InlineButtons.cs" />
     <Compile Include="NotifyEvent.cs" />
     <Compile Include="Places.cs" />
     <Compile Include="Player.cs" />

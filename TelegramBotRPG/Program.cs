@@ -17,7 +17,6 @@ namespace TelegramBotRPG
 
         public static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
-            // Некоторые действия
             Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(update));
             Console.WriteLine();
             if (update.Type == Telegram.Bot.Types.Enums.UpdateType.Message)
@@ -31,17 +30,15 @@ namespace TelegramBotRPG
                 }
             }
         }
-
         public static async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
-            // Некоторые действия
             Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(exception));
         }
 
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Запущен бот " + bot.GetMeAsync().Result.FirstName);
+            Console.WriteLine("work bot " + bot.GetMeAsync().Result.FirstName);
 
             var cts = new CancellationTokenSource();
             var cancellationToken = cts.Token;
