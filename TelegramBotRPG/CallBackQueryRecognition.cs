@@ -53,6 +53,11 @@ namespace TelegramBotRPG
                         Places.emptyPlace(callbackQuery.Message, botClient);
                     }
                     break;
+                case "de":
+                    NotifyEvent.addMessage("you escape from enemy");
+                    Places.emptyPlace(callbackQuery.Message, botClient);
+                    Player.damageFactor = 1;
+                    break;
                 default:
                     break;
             }
