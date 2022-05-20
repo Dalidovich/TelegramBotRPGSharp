@@ -24,10 +24,13 @@ namespace TelegramBotRPG
                 var message = update.Message;
                 if (message.Text.ToLower() == "/start")
                 {
-                    Player pl = new Player(10, 10, 0, 2, 3);
-                    Places.welcome(pl, message, bot);
+                    Places.welcome(message, bot);
                     return;
                 }
+            }
+            if (update.Type == Telegram.Bot.Types.Enums.UpdateType.CallbackQuery)
+            {
+                CallBackQueryRecognition.HandleCallbackQuery(botClient, update.CallbackQuery);
             }
         }
         public static async Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
@@ -35,6 +38,7 @@ namespace TelegramBotRPG
             Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(exception));
         }
 
+        
 
         static void Main(string[] args)
         {

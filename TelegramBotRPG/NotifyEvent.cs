@@ -19,7 +19,7 @@ namespace YPTelegramBotRPG
         {
             lines.Add(m);
         }
-        public static string display()
+        public static new string ToString()
         {
             string txt = "";
             foreach (var item in lines)
@@ -41,12 +41,12 @@ namespace YPTelegramBotRPG
         public static string statistic()
         {
             return $"\n" +
-                   $"count reserch Rooms: {countRooms}" +
-                   $"count kills: {countKills}" +
-                   $"count use HP potion: {countDrunkPotion}" +
-                   $"count damage which player take: {countTakeDamage}" +
-                   $"count damage which player give: {countGiveDamage}" +
-                   $"count regen hp potions: {countRegenPoints}";
+                   $"count reserch Rooms: {countRooms}\n" +
+                   $"count kills: {countKills}\n" +
+                   $"count use HP potion: {countDrunkPotion}\n" +
+                   $"count damage which player take: {countTakeDamage}\n" +
+                   $"count damage which player give: {countGiveDamage}\n" +
+                   $"count regen hp potions: {countRegenPoints}\n";
         }
     }
 }

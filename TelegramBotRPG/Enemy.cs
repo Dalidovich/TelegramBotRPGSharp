@@ -16,9 +16,9 @@ namespace YPTelegramBotRPG
             this.hp = hp;
             this.damage = damage;
         }
-        public Enemy(Player player)
+        public Enemy()
         {
-            int playerPower = ((player.curHp + player.damage) / 2) - 2;
+            int playerPower = ((Player.curHp + Player.damage) / 2) - 2;
             int enemyDamage = 1;
             int enemyHp = 1;
             while (playerPower > 0)
@@ -37,15 +37,14 @@ namespace YPTelegramBotRPG
             this.hp = enemyHp;
             this.damage = enemyDamage;
         }
-        public Player atack(Player player)
+        public void atack()
         {
-            if (!player.deadCheck())
+            if (!Player.deadCheck())
             {
-                player.curHp -= this.damage;
+                Player.curHp -= this.damage;
                 NotifyEvent.countTakeDamage += this.damage;
                 NotifyEvent.addMessage($"you TAKE {this.damage} damage");
             }
-            return player;
         }
         public bool deadCheck() => this.hp < 1;
         public override string ToString()

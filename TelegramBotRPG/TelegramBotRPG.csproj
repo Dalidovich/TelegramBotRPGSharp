@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallBackQueryRecognition.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="InlineButtons.cs" />
     <Compile Include="NotifyEvent.cs" />

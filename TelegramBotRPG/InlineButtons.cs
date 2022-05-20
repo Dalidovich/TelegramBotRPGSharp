@@ -29,5 +29,18 @@ namespace TelegramBotRPG
                 }
             );
         }
+        public static IReplyMarkup GetButtonsOnEndGame()
+        {
+            return new InlineKeyboardMarkup
+            (
+                new List<List<InlineKeyboardButton>>
+                {
+                    new List<InlineKeyboardButton>
+                    {
+                        new InlineKeyboardButton("1") { Text = "restart",CallbackData="rest"}
+                    },
+                }
+            );
+        }
     }
 }
