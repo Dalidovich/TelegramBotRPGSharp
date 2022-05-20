@@ -6,17 +6,38 @@ using System.Threading.Tasks;
 
 namespace YPTelegramBotRPG
 {
-    public class Enemy
+    public static class Enemy
     {
-        public int hp;
-        public int damage;
+        public static int hp=1;
+        public static int damage=1;
 
-        public Enemy(int hp, int damage)
-        {
-            this.hp = hp;
-            this.damage = damage;
-        }
-        public Enemy()
+        //public Enemy(int hp, int damage)
+        //{
+        //    this.hp = hp;
+        //    this.damage = damage;
+        //}
+        //public Enemy()
+        //{
+        //    int playerPower = ((Player.curHp + Player.damage) / 2) - 2;
+        //    int enemyDamage = 1;
+        //    int enemyHp = 1;
+        //    while (playerPower > 0)
+        //    {
+        //        Random rnd = new Random();
+        //        if (rnd.Next(0, 2) == 0)
+        //        {
+        //            enemyDamage += 1;
+        //        }
+        //        else
+        //        { 
+        //            enemyHp += 1;
+        //        }
+        //        playerPower -= 1;
+        //    }
+        //    this.hp = enemyHp;
+        //    this.damage = enemyDamage;
+        //}
+        public static void setSelfProperties()
         {
             int playerPower = ((Player.curHp + Player.damage) / 2) - 2;
             int enemyDamage = 1;
@@ -29,34 +50,34 @@ namespace YPTelegramBotRPG
                     enemyDamage += 1;
                 }
                 else
-                { 
+                {
                     enemyHp += 1;
                 }
                 playerPower -= 1;
             }
-            this.hp = enemyHp;
-            this.damage = enemyDamage;
+            hp = enemyHp;
+            damage=enemyDamage;
         }
-        public void atack()
+        public static void atack()
         {
             if (!Player.deadCheck())
             {
-                Player.curHp -= this.damage;
-                NotifyEvent.countTakeDamage += this.damage;
-                NotifyEvent.addMessage($"you TAKE {this.damage} damage");
+                Player.curHp -= damage;
+                NotifyEvent.countTakeDamage += damage;
+                NotifyEvent.addMessage($"you TAKE {damage} damage");
             }
         }
-        public bool deadCheck() => this.hp < 1;
-        public override string ToString()
+        public static bool deadCheck() => hp < 1;
+        public static new string ToString()
         {
-            if (this.deadCheck())
+            if (deadCheck())
             {
                 return "enemy dead";
             }
             else
             {
-                return $"enemy hp: {this.hp}\n" +
-                       $"enemy damage: {this.damage}";
+                return $"enemy hp: {hp}\n" +
+                       $"enemy damage: {damage}\n";
             }
         }
     }
