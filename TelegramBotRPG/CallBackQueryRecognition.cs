@@ -14,52 +14,9 @@ namespace TelegramBotRPG
     {
         public static async Task HandleCallbackQuery(ITelegramBotClient botClient, CallbackQuery callbackQuery)
         {
-            switch (callbackQuery.Data)
+            if (callbackQuery.Data == "q")
             {
-                case "q":
-                    Places.endGame(callbackQuery.Message, botClient);
-                    break;
-                case "nr":
-                    Enemy.setSelfProperties();
-                    Places.fightPlace(callbackQuery.Message, botClient);
-                    break;
-                case "a":
-                    if (!Enemy.deadCheck())
-                    {
-                        Player.atack();
-                        Enemy.atack();
-                        Places.fightPlace(callbackQuery.Message,botClient);
-                    }
-                    else
-                    {
-                        Places.emptyPlace(callbackQuery.Message, botClient);
-                    }
-                    break;
-                case "d":
-                    if(!Enemy.deadCheck())
-                    {
-                        Player.dodge();
-                        if (Player.damageFactor == 2)
-                        {
-                            Places.playerDodge(callbackQuery.Message, botClient);
-                        }
-                        else
-                        {
-                            Places.fightPlace(callbackQuery.Message, botClient);
-                        }
-                    }
-                    else
-                    {
-                        Places.emptyPlace(callbackQuery.Message, botClient);
-                    }
-                    break;
-                case "de":
-                    NotifyEvent.addMessage("you escape from enemy");
-                    Places.emptyPlace(callbackQuery.Message, botClient);
-                    Player.damageFactor = 1;
-                    break;
-                default:
-                    break;
+                Places.endGame(callbackQuery.Message, botClient);
             }
             //await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "lol", replyMarkup: InlineButtons.GetButtonsOnEmptyPlace());
             return;

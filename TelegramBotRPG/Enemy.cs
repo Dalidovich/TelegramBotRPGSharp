@@ -42,9 +42,9 @@ namespace YPTelegramBotRPG
             int playerPower = ((Player.curHp + Player.damage) / 2) - 2;
             int enemyDamage = 1;
             int enemyHp = 1;
-            Random rnd = new Random();
             while (playerPower > 0)
             {
+                Random rnd = new Random();
                 if (rnd.Next(0, 2) == 0)
                 {
                     enemyDamage += 1;
