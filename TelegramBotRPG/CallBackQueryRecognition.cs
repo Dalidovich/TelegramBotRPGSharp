@@ -14,9 +14,47 @@ namespace TelegramBotRPG
     {
         public static async Task HandleCallbackQuery(ITelegramBotClient botClient, CallbackQuery callbackQuery)
         {
-            if (callbackQuery.Data == "q")
+            switch (callbackQuery.Data)
             {
-                Places.endGame(callbackQuery.Message, botClient);
+                case "q":
+                    Places.endGame(callbackQuery.Message, botClient);
+                    break;
+                case "nr":
+                    Enemy.setSelfProperties();
+                    Places.fightPlace(callbackQuery.Message, botClient);
+                    break;
+                case "a":
+                    if (!Enemy.deadCheck())
+                    {
+                        Player.atack();
+                        Enemy.atack();
+                        Places.fightPlace(callbackQuery.Message,botClient);
+                    }
+                    else
+                    {
+                        Places.emptyPlace(callbackQuery.Message, botClient);
+                    }
+                    break;
+                case "d":
+                    if(!Enemy.deadCheck())
+                    {
+                        Player.dodge();
+                        if (Player.damageFactor == 2)
+                        {
+                            Places.playerDodge(callbackQuery.Message, botClient);
+                        }
+                        else
+                        {
+                            Places.fightPlace(callbackQuery.Message, botClient);
+                        }
+                    }
+                    else
+                    {
+                        Places.emptyPlace(callbackQuery.Message, botClient);
+                    }
+                    break;
+                default:
+                    break;
             }
             //await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "lol", replyMarkup: InlineButtons.GetButtonsOnEmptyPlace());
             return;

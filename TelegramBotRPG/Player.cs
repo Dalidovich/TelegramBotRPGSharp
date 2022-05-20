@@ -8,13 +8,13 @@ namespace YPTelegramBotRPG
 {
     public static class Player
     {
-        public static int maxHp;
-        public static int curHp;
-        public static int coins;
-        public static int damage;
-        public static int hpPotion;
-        public static int damageFactor;
-        public static int regenPower;
+        public static int maxHp=10;
+        public static int curHp=10;
+        public static int coins=0;
+        public static int damage=2;
+        public static int hpPotion=3;
+        public static int damageFactor=1;
+        public static int regenPower=2;
 
         //public Player(int maxHp, int curHp, int coins, int damage, int hpPotion, int damageFactor=1, int regenPower=2)
         //{
@@ -35,16 +35,25 @@ namespace YPTelegramBotRPG
                    $"HP POTION: {hpPotion}\n" +
                    $"POTION REGEN {regenPower}\n\n";
         }
-        public static Enemy atack(Enemy enemy)
+        public static void refrechProperties()
         {
-            enemy.hp -= damage * damageFactor;
+            maxHp = 10;
+            curHp = 10;
+            coins = 0;
+            damage = 2;
+            hpPotion = 3;
+            damageFactor = 1;
+            regenPower = 2;
+    }
+        public static void atack()
+        {
+            Enemy.hp -= damage * damageFactor;
             NotifyEvent.countGiveDamage += damage * damageFactor;
             NotifyEvent.addMessage($"you GIVE {damage * damageFactor} damage");
             damageFactor = 1;
-            return enemy;
         }
         public static bool deadCheck() => curHp < 1;
-        public static void dodge(Enemy enemy)
+        public static void dodge()
         {
             Random rnd = new Random();
             if (rnd.Next(0, 2) == 1)
@@ -55,7 +64,7 @@ namespace YPTelegramBotRPG
             else
             {
                 NotifyEvent.addMessage("you not dodge, loser");
-                enemy.atack();
+                Enemy.atack();
             }
         }
         public static void useHpPotion()
