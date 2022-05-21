@@ -58,6 +58,17 @@ namespace TelegramBotRPG
                     Places.emptyPlace(callbackQuery.Message, botClient);
                     Player.damageFactor = 1;
                     break;
+                case "da":
+                    if(!Enemy.deadCheck())
+                    {
+                        Player.atack();
+                        Places.fightPlace(callbackQuery.Message,botClient);
+                    }
+                    else
+                    {
+                        Places.emptyPlace(callbackQuery.Message, botClient);
+                    }
+                    break;
                 case "rest":
                     Places.welcome(callbackQuery.Message, botClient);
                     break;
