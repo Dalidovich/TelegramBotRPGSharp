@@ -54,7 +54,7 @@ namespace TelegramBotRPG
                 {
                     new List<InlineKeyboardButton>
                     {
-                        new InlineKeyboardButton("1") { Text = "atack",CallbackData="a"}, new InlineKeyboardButton("2") { Text = "quit",CallbackData = "q" }
+                        new InlineKeyboardButton("1") { Text = "atack",CallbackData="a"}, new InlineKeyboardButton("2") { Text = "escape",CallbackData = "de" }
                     },
                     new List<InlineKeyboardButton>
                     {

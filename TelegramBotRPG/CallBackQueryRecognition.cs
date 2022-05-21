@@ -20,8 +20,7 @@ namespace TelegramBotRPG
                     Places.endGame(callbackQuery.Message, botClient);
                     break;
                 case "nr":
-                    Enemy.setSelfProperties();
-                    Places.fightPlace(callbackQuery.Message, botClient);
+                    Places.roomsGenerator(callbackQuery.Message, botClient);
                     break;
                 case "a":
                     if (!Enemy.deadCheck())
@@ -57,6 +56,9 @@ namespace TelegramBotRPG
                     NotifyEvent.addMessage("you escape from enemy");
                     Places.emptyPlace(callbackQuery.Message, botClient);
                     Player.damageFactor = 1;
+                    break;
+                case "rest":
+                    Places.welcome(callbackQuery.Message, botClient);
                     break;
                 default:
                     break;
