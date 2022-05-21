@@ -108,15 +108,5 @@ namespace YPTelegramBotRPG
             botClient.SendTextMessageAsync(m.Chat.Id, messageFromBot,replyMarkup: InlineButtons.GetButtonsOnLifeAltar());
 
         }
-    //    def lifeAltarPlace(message):
-    //markup = types.InlineKeyboardMarkup(row_width=2)
-    //itembtn1 = types.InlineKeyboardButton('potion power', callback_data='pu')
-    //itembtn2 = types.InlineKeyboardButton('max hp', callback_data='hu')
-    //markup.add(itembtn1, itembtn2)
-    //messageFromBot = "you find life altar.\nWhat do you want to improve?"
-    //notifyEvent.clearLines()
-    //bot.edit_message_text(text= messageFromBot, chat_id= message.chat.id, message_id= message.message_id, reply_markup= markup)
-    //# bot.send_message(message.chat.id, messageFromBot, reply_markup=markup)
-
     }
 }

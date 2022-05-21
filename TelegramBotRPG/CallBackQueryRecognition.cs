@@ -84,9 +84,29 @@ namespace TelegramBotRPG
                     Places.emptyPlace(callbackQuery.Message, botClient);
                     break;
                 default:
+                    if(callbackQuery.Data.Contains("uhp"))
+                    {
+                        if (Player.hpPotion != 0)
+                        {
+                            Player.useHpPotion();
+                            NotifyEvent.countDrunkPotion++;
+                            if (callbackQuery.Data[3] == 'e')
+                            {
+                                Places.emptyPlace(callbackQuery.Message, botClient);
+                            }
+                            if (callbackQuery.Data[3] == 'f')
+                            {
+                                Enemy.atack();
+                                Places.fightPlace(callbackQuery.Message, botClient);
+                            }
+                            if (callbackQuery.Data[3] == 'd')
+                            {
+                                Places.fightPlace(callbackQuery.Message, botClient);
+                            }
+                        }
+                    }
                     break;
             }
-            //await botClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "lol", replyMarkup: InlineButtons.GetButtonsOnEmptyPlace());
             return;
         }
     }
