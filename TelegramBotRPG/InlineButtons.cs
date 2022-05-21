@@ -76,5 +76,18 @@ namespace TelegramBotRPG
                 }
             );
         }
+        public static IReplyMarkup GetButtonsOnLifeAltar()
+        {
+            return new InlineKeyboardMarkup
+            (
+                new List<List<InlineKeyboardButton>>
+                {
+                    new List<InlineKeyboardButton>
+                    {
+                        new InlineKeyboardButton("1") { Text = "potion power",CallbackData="pu"}, new InlineKeyboardButton("2") { Text = "max hp",CallbackData = "hu" }
+                    }
+                }
+            );
+        }
     }
 }

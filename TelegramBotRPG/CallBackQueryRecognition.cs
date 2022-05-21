@@ -20,6 +20,7 @@ namespace TelegramBotRPG
                     Places.endGame(callbackQuery.Message, botClient);
                     break;
                 case "nr":
+                    NotifyEvent.countRooms++;
                     Places.roomsGenerator(callbackQuery.Message, botClient);
                     break;
                 case "a":
@@ -59,6 +60,17 @@ namespace TelegramBotRPG
                     break;
                 case "rest":
                     Places.welcome(callbackQuery.Message, botClient);
+                    break;
+                case "hu":
+                    Player.maxHp += 1;
+                    Player.curHp = Player.maxHp;
+                    NotifyEvent.addMessage("you level up max Hp");
+                    Places.emptyPlace(callbackQuery.Message, botClient);
+                    break;
+                case "pu":
+                    Player.regenPower ++;
+                    NotifyEvent.addMessage("you level up regen potion power");
+                    Places.emptyPlace(callbackQuery.Message, botClient);
                     break;
                 default:
                     break;
