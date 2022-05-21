@@ -63,7 +63,7 @@ namespace YPTelegramBotRPG
             switch (rnd.Next(1, 4))
             {
                 case 1:
-                    Console.WriteLine("chest");
+                    Places.chestPlace(m, botClient);
                     break;
                 case 2:
                     Console.WriteLine("altar");
@@ -77,16 +77,29 @@ namespace YPTelegramBotRPG
                     break;
             }
         }
+        public static void chestPlace(Message m, ITelegramBotClient botClient)
+        {
+            Random rnd = new Random();
+            string messageFromBot = "you find chest.\n";
+            int choose = rnd.Next(0, 2);
+            if (choose == 0)
+            {
+                messageFromBot += "you found new weapon in chest";
+                Player.damage += 1;
+            }
+            else if (choose == 1)
+            {
+                messageFromBot += "you found coins in chest";
+                Player.coins += 1;
+            }
+            else
+            {
+                int countPotion = rnd.Next(1, 3);
+                messageFromBot += $"you found {countPotion} hp potion in chest";
+                Player.hpPotion += countPotion;
+            }
+            NotifyEvent.addMessage(messageFromBot);
+            Places.emptyPlace(m,botClient);
+        }
     }
-    //def roomsGenerator(message):
-    //fortuna=random.randint(1,4)
-    //global en
-    //if fortuna >= 3:
-    //    en = createEnemy(pl)
-    //    notifyEvent.addMessage("you find enemy in room")
-    //    fightPlace(message)
-    //elif fortuna == 2:
-    //    chestPlace(message)
-    //elif fortuna == 1:
-    //    lifeAltarPlace(message)
 }
