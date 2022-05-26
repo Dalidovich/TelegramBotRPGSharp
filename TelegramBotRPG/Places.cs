@@ -59,8 +59,7 @@ namespace YPTelegramBotRPG
         }
         public static void roomsGenerator(Message m, ITelegramBotClient botClient)
         {
-            Random rnd = new Random();
-            switch (rnd.Next(1, 4))
+            switch (Pseudorandom.Next(1,4))
             {
                 case 1:
                     Places.chestPlace(m, botClient);
@@ -79,9 +78,8 @@ namespace YPTelegramBotRPG
         }
         public static void chestPlace(Message m, ITelegramBotClient botClient)
         {
-            Random rnd = new Random();
             string messageFromBot = "you find chest.\n";
-            int choose = rnd.Next(0, 2);
+            int choose = Pseudorandom.Next(0,2);
             if (choose == 0)
             {
                 messageFromBot += "you found new weapon in chest";
@@ -94,7 +92,7 @@ namespace YPTelegramBotRPG
             }
             else
             {
-                int countPotion = rnd.Next(1, 3);
+                int countPotion = Pseudorandom.Next(1, 3);
                 messageFromBot += $"you found {countPotion} hp potion in chest";
                 Player.hpPotion += countPotion;
             }
