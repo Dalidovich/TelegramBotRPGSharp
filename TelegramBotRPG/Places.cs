@@ -24,13 +24,15 @@ namespace YPTelegramBotRPG
         {
             string messageFromBot = NotifyEvent.ToString() + Player.ToString() + NotifyEvent.statistic();
             NotifyEvent.clearLines();
-            await botClient.SendTextMessageAsync(m.Chat, messageFromBot, replyMarkup: InlineButtons.GetButtonsOnEndGame());
+            await botClient.EditMessageTextAsync(new ChatId(m.Chat.Id), m.MessageId, messageFromBot,replyMarkup: (InlineKeyboardMarkup)InlineButtons.GetButtonsOnEndGame());
+            //await botClient.SendTextMessageAsync(m.Chat, messageFromBot, replyMarkup: InlineButtons.GetButtonsOnEndGame());
         }
         public static async void emptyPlace(Message m, ITelegramBotClient botClient)
         {
             string messageFromBot = NotifyEvent.ToString() + Player.ToString();
             NotifyEvent.clearLines();
-            await botClient.SendTextMessageAsync(m.Chat, messageFromBot, replyMarkup: InlineButtons.GetButtonsOnEmptyPlace());
+            await botClient.EditMessageTextAsync(new ChatId(m.Chat.Id), m.MessageId, messageFromBot, replyMarkup: (InlineKeyboardMarkup)InlineButtons.GetButtonsOnEmptyPlace());
+            //await botClient.SendTextMessageAsync(m.Chat, messageFromBot, replyMarkup: InlineButtons.GetButtonsOnEmptyPlace());
         }
         public static async void fightPlace(Message m, ITelegramBotClient botClient)
         {
@@ -49,13 +51,15 @@ namespace YPTelegramBotRPG
             }
             string messageFromBot = NotifyEvent.ToString() + Player.ToString() + Enemy.ToString();
             NotifyEvent.clearLines();
-            await botClient.SendTextMessageAsync(m.Chat, messageFromBot, replyMarkup: InlineButtons.GetButtonsOnFight());
+            await botClient.EditMessageTextAsync(new ChatId(m.Chat.Id), m.MessageId, messageFromBot, replyMarkup: (InlineKeyboardMarkup)InlineButtons.GetButtonsOnFight());
+            //await botClient.SendTextMessageAsync(m.Chat, messageFromBot, replyMarkup: InlineButtons.GetButtonsOnFight());
         }
         public static async void playerDodge(Message m, ITelegramBotClient botClient)
         {
             string messageFromBot = NotifyEvent.ToString() + Player.ToString() + Enemy.ToString();
             NotifyEvent.clearLines();
-            await botClient.SendTextMessageAsync(m.Chat, messageFromBot, replyMarkup: InlineButtons.GetButtonsOnDodge());
+            await botClient.EditMessageTextAsync(new ChatId(m.Chat.Id), m.MessageId, messageFromBot, replyMarkup: (InlineKeyboardMarkup)InlineButtons.GetButtonsOnDodge());
+            //await botClient.SendTextMessageAsync(m.Chat, messageFromBot, replyMarkup: InlineButtons.GetButtonsOnDodge());
         }
         public static void roomsGenerator(Message m, ITelegramBotClient botClient)
         {
@@ -99,11 +103,12 @@ namespace YPTelegramBotRPG
             NotifyEvent.addMessage(messageFromBot);
             Places.emptyPlace(m,botClient);
         }
-        public static void lifeAltarPlace(Message m, ITelegramBotClient botClient)
+        public static async void lifeAltarPlace(Message m, ITelegramBotClient botClient)
         {
             string messageFromBot = "you find life altar.\nWhat do you want to improve?";
             NotifyEvent.clearLines();
-            botClient.SendTextMessageAsync(m.Chat.Id, messageFromBot,replyMarkup: InlineButtons.GetButtonsOnLifeAltar());
+            await botClient.EditMessageTextAsync(new ChatId(m.Chat.Id), m.MessageId, messageFromBot, replyMarkup: (InlineKeyboardMarkup)InlineButtons.GetButtonsOnLifeAltar());
+            //botClient.SendTextMessageAsync(m.Chat.Id, messageFromBot,replyMarkup: InlineButtons.GetButtonsOnLifeAltar());
 
         }
     }

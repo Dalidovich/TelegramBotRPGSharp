@@ -18,12 +18,7 @@ namespace TelegramBotRPG
                 x = rnd.Next(a,b);
             }
             moveQueue(x);
-            testDisplay(x);
             return x;
-        }
-        private static void testDisplay(int x)
-        {
-            Console.Write($"\n{String.Join(",",queue)}\n{x}\n");
         }
         private static void moveQueue(int x)
         {
