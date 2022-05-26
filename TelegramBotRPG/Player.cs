@@ -35,7 +35,7 @@ namespace YPTelegramBotRPG
                    $"HP POTION: {hpPotion}\n" +
                    $"POTION REGEN {regenPower}\n\n";
         }
-        public static void refrechProperties()
+        public static void refreshProperties()
         {
             maxHp = 10;
             curHp = 10;

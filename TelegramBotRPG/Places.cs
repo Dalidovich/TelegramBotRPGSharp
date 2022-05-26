@@ -15,7 +15,7 @@ namespace YPTelegramBotRPG
     {
         public static async void welcome(Message m, ITelegramBotClient botClient)
         {
-            Player.refrechProperties();
+            Player.refreshProperties();
             string messageFromBot = NotifyEvent.ToString() + Player.ToString();
             NotifyEvent.clearLines();
             await botClient.SendTextMessageAsync(m.Chat, messageFromBot, replyMarkup: InlineButtons.GetButtonsOnEmptyPlace());
