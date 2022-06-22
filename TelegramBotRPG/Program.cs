@@ -12,7 +12,7 @@ namespace TelegramBotRPG
 {
     class Program
     {
-        static string token = "5351436961:AAF-iDujaGVuEyM6F2zxLO6sGUloU62ZFic";
+        static string token = "";// input your token
         static ITelegramBotClient bot = new TelegramBotClient(token);
 
         public static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
